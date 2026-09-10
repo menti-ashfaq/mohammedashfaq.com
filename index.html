@@ -3,25 +3,412 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mohammed Ashfaq</title>
-<meta name="description" content="Apps by Mohammed Ashfaq.">
+<title>Mohammed Ashfaq — Platform Engineer &amp; App Maker</title>
+<meta name="description" content="Mohammed Ashfaq is a platform engineer at Mentimeter who builds small, careful apps. Try the dinner picker from What Do I Cook Today.">
+<link rel="canonical" href="https://mohammedashfaq.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohammedashfaq.com/">
+<meta property="og:title" content="Mohammed Ashfaq — Platform Engineer &amp; App Maker">
+<meta property="og:description" content="Platform engineer by day, small-app maker by night. Try the dinner picker.">
+<meta property="og:image" content="https://mohammedashfaq.com/assets/portrait.jpg">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#FFF8F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130F" media="(prefers-color-scheme: dark)">
+
 <link rel="stylesheet" href="/style.css">
+<script>
+  // Applied before first paint so the saved theme never flashes the wrong colours.
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohammed Ashfaq",
+  "url": "https://mohammedashfaq.com/",
+  "email": "hello@mohammedashfaq.com",
+  "image": "https://mohammedashfaq.com/assets/portrait.jpg",
+  "jobTitle": "Platform Engineer",
+  "worksFor": { "@type": "Organization", "name": "Mentimeter" },
+  "sameAs": ["https://github.com/menti-ashfaq"]
+}
+</script>
 </head>
+
 <body>
-<div class="wrap">
-  <h1>Mohammed Ashfaq</h1>
-  <p class="updated">Small apps, made carefully.</p>
+<a class="skip" href="#main">Skip to content</a>
 
-  <a class="app-row" href="/whatdoicooktoday/privacy/">
-    <div>
-      <div class="name">What Do I Cook Today</div>
-      <div class="desc">Picks tonight's dinner from the dishes you already cook. Privacy policy →</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#home">
+      <span class="brand-dot" aria-hidden="true"></span>
+      Mohammed&nbsp;Ashfaq
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#dinner">Demo</a>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="topbar-actions">
+      <button class="icon-btn" id="theme-btn" type="button" title="Switch theme" aria-label="Switch colour theme">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
+      <button class="icon-btn nav-btn" id="nav-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span class="burger" aria-hidden="true"></span>
+      </button>
     </div>
-  </a>
+  </div>
+</header>
 
-  <footer>
-    <a href="mailto:hello@mohammedashfaq.com">hello@mohammedashfaq.com</a>
-  </footer>
-</div>
+<main id="main">
+
+  <!-- ───────────────────────── Hero ───────────────────────── -->
+  <section class="hero" id="home">
+    <div class="blobs" aria-hidden="true">
+      <span class="blob b1"></span>
+      <span class="blob b2"></span>
+      <span class="blob b3"></span>
+    </div>
+
+    <div class="wrap hero-inner">
+      <button class="portrait-btn reveal" id="portrait-btn" type="button" title="Go on, tap it" aria-label="Mohammed Ashfaq — tap for a snack">
+        <img class="portrait" src="/assets/portrait.jpg" alt="Mohammed Ashfaq" width="150" height="150" fetchpriority="high">
+        <span class="portrait-ring" aria-hidden="true"></span>
+      </button>
+
+      <p class="eyebrow reveal">
+        <span class="pulse" aria-hidden="true"></span>
+        Platform Engineer at Mentimeter
+      </p>
+
+      <h1 class="reveal">
+        I build things that
+        <span class="swap" id="swap" aria-live="polite">
+          <span class="swap-word is-on">stay out of the way</span>
+        </span>
+      </h1>
+
+      <p class="lead reveal">
+        Platform engineering by day — pipelines, containers, and the unglamorous
+        plumbing that makes shipping boring in the best way. By night I make small
+        apps that do one thing, keep your data on your own device, and never ask
+        you to sign up.
+      </p>
+
+      <div class="cta-row reveal">
+        <a class="btn btn-primary" href="#dinner">Try the dinner picker</a>
+        <a class="btn" href="#work">See my work</a>
+      </div>
+
+      <dl class="stats reveal">
+        <div><dt>Years shipping</dt><dd data-count="8">8</dd></div>
+        <div><dt>Apps in the oven</dt><dd data-count="1">1</dd></div>
+        <div><dt>Trackers I ship</dt><dd data-count="0">0</dd></div>
+      </dl>
+    </div>
+
+    <a class="scroll-hint" href="#dinner" aria-hidden="true" tabindex="-1">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ──────────────────── Interactive demo ──────────────────── -->
+  <section class="band" id="dinner">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="kicker">Playable</p>
+        <h2>What Do I Cook Today</h2>
+        <p class="sec-sub">
+          An iOS app for people who can already cook twenty things and still stare
+          into the fridge. Below is the real picker, running the same weighting the
+          app uses: the longer since you cooked something, the likelier it comes up.
+        </p>
+      </header>
+
+      <div class="demo reveal">
+        <div class="demo-phone">
+          <div class="phone">
+            <div class="phone-top" aria-hidden="true"><span class="notch"></span></div>
+
+            <div class="phone-screen">
+              <div class="phone-head">
+                <img class="app-icon" src="/assets/cooktoday-icon.png" alt="" width="34" height="34">
+                <div>
+                  <p class="phone-title">Today</p>
+                  <p class="phone-sub" id="pool-count">32 dishes in rotation</p>
+                </div>
+              </div>
+
+              <div class="tags" role="group" aria-label="Filter by mood">
+                <button class="tag" type="button" data-tag="veg">veg</button>
+                <button class="tag" type="button" data-tag="quick">quick</button>
+                <button class="tag" type="button" data-tag="comfort">comfort</button>
+                <button class="tag" type="button" data-tag="healthy">healthy</button>
+              </div>
+
+              <div class="result" id="result" aria-live="polite">
+                <div class="result-empty" id="result-empty">
+                  <span class="plate" aria-hidden="true">🍽️</span>
+                  <p>Tap below and I'll decide for you.</p>
+                </div>
+              </div>
+
+              <div class="phone-actions">
+                <button class="btn btn-primary btn-block" id="pick-btn" type="button">Pick my dinner</button>
+                <div class="sub-actions" id="sub-actions" hidden>
+                  <button class="btn btn-sm" id="shuffle-btn" type="button">Shuffle again</button>
+                  <button class="btn btn-sm btn-cook" id="cook-btn" type="button">I'm cooking this</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-notes">
+          <h3>How the pick works</h3>
+          <ul class="notes">
+            <li>
+              <strong>Staleness, squared.</strong> Every dish gets a weight of
+              <code>(days since cooked + 1)²</code>, so a meal you last made in
+              spring easily outbids last Tuesday's pasta.
+            </li>
+            <li>
+              <strong>Never-cooked counts as 90 days.</strong> New dishes compete
+              hard without completely taking over the rotation.
+            </li>
+            <li>
+              <strong>Shuffles cheat, on purpose.</strong> Four times in ten a
+              reroll ignores the weighting entirely, so it never feels like the
+              app is on rails.
+            </li>
+            <li>
+              <strong>Nothing leaves the device.</strong> No accounts, no backend,
+              no analytics — in the app, and on this page too. Your taps here stay
+              in your own browser.
+            </li>
+          </ul>
+
+          <div class="cook-log" id="cook-log" hidden>
+            <p class="cook-log-title">Cooked in this session</p>
+            <ul id="cook-log-list"></ul>
+          </div>
+
+          <p class="ship-note">
+            <span class="badge">Coming soon</span>
+            Built with Expo and React Native, in review for the App Store.
+            <a href="/whatdoicooktoday/privacy/">Privacy policy</a> ·
+            <a href="https://github.com/menti-ashfaq/whatdoicooktoday">Source</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── Work ───────────────────────── -->
+  <section class="wrap section" id="work">
+    <header class="sec-head reveal">
+      <p class="kicker">Work</p>
+      <h2>Eight years of making systems behave</h2>
+    </header>
+
+    <ol class="timeline">
+      <li class="tl-item reveal">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
+          <header class="tl-head">
+            <h3>Platform Engineer</h3>
+            <p class="when"><span class="now-dot" aria-hidden="true"></span>Mentimeter · 2022 – now</p>
+          </header>
+          <p>
+            Platform and developer-experience work: build and deploy pipelines,
+            containerised services, and the infrastructure that lets product teams
+            ship without thinking about any of it.
+          </p>
+          <p class="chips"><span>AWS</span><span>Docker</span><span>Terraform</span><span>CI/CD</span></p>
+        </article>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
+          <header class="tl-head">
+            <h3>DevOps Engineer</h3>
+            <p class="when">NOMADD · 2020 – 2022</p>
+          </header>
+          <ul>
+            <li>Rewrote Node.js and C++ messaging paths and took communication latency from <strong>2 s to 50 ms</strong>.</li>
+            <li>Packaged the communication hub into Docker images and scripts, cutting setup from hours to minutes.</li>
+            <li>Led a React and REST dashboard for ticketing that halved time-to-resolution.</li>
+            <li>Designed and maintained the CI/CD pipelines.</li>
+          </ul>
+          <p class="chips"><span>Node.js</span><span>C++</span><span>React</span><span>Docker</span></p>
+        </article>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
+          <header class="tl-head">
+            <h3>Software Engineer</h3>
+            <p class="when">King Abdullah University of Science and Technology · 2018 – 2020</p>
+          </header>
+          <ul>
+            <li>Re-engineered end-to-end service processes and cut paperwork by <strong>90%</strong> across five departments.</li>
+            <li>Restructured Python services around clearer object models and faster execution.</li>
+            <li>Built a SharePoint and Power Apps panel for handover tracking that cut item-hunting time by 75%.</li>
+          </ul>
+          <p class="chips"><span>Python</span><span>MVC</span><span>SharePoint</span><span>Power BI</span></p>
+        </article>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ─────────────────────── Projects ─────────────────────── -->
+  <section class="wrap section" id="projects">
+    <header class="sec-head reveal">
+      <p class="kicker">Projects</p>
+      <h2>Things I've shipped</h2>
+      <p class="sec-sub">Newest first. The older ones are no longer live — kept here because the work still counts.</p>
+    </header>
+
+    <div class="cards">
+      <article class="card tilt reveal is-current">
+        <p class="card-tag">In review</p>
+        <h3>What Do I Cook Today</h3>
+        <p>
+          iOS app that picks tonight's dinner from the dishes you already cook,
+          weighted by how long since you last made each one. Offline by design.
+        </p>
+        <p class="card-links">
+          <a href="#dinner">Try the demo</a>
+          <a href="https://github.com/menti-ashfaq/whatdoicooktoday">Source</a>
+        </p>
+      </article>
+
+      <article class="card tilt reveal">
+        <p class="card-tag">2019</p>
+        <h3>AlNifayat</h3>
+        <p>
+          Waste-management app for the KAUST community — schedules, sorting
+          guidance, and resale. I led design, development, and a small team
+          through to release on the App Store.
+        </p>
+        <p class="card-links"><span class="dead">No longer on the App Store</span></p>
+      </article>
+
+      <article class="card tilt reveal">
+        <p class="card-tag">2019</p>
+        <h3>BuildUrCv</h3>
+        <p>
+          Resume builder with modern templates. Took it from concept to
+          deployment, with automated builds and continuous integration.
+        </p>
+        <p class="card-links"><span class="dead">Site retired</span></p>
+      </article>
+
+      <article class="card tilt reveal">
+        <p class="card-tag">2018</p>
+        <h3>Attendo</h3>
+        <p>
+          Smart attendance app built to retire paper roll-calls. Team lead on the
+          winning entry at the SAP Smart City Hackathon.
+        </p>
+        <p class="card-links">
+          <a href="https://www.facebook.com/appattendo/">Project page</a>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ────────────────────── Background ────────────────────── -->
+  <section class="wrap section" id="background">
+    <header class="sec-head reveal">
+      <p class="kicker">Background</p>
+      <h2>Toolkit and schooling</h2>
+    </header>
+
+    <div class="split">
+      <div class="reveal">
+        <h3 class="sub">What I reach for</h3>
+        <div class="skillset">
+          <div>
+            <p class="skill-label">Platform</p>
+            <p class="chips"><span>AWS</span><span>Docker</span><span>Terraform</span><span>Ansible</span><span>Jenkins</span><span>Linux</span></p>
+          </div>
+          <div>
+            <p class="skill-label">Languages</p>
+            <p class="chips"><span>Python</span><span>TypeScript</span><span>Java</span><span>C++</span><span>Bash</span><span>SQL</span></p>
+          </div>
+          <div>
+            <p class="skill-label">Building apps</p>
+            <p class="chips"><span>React</span><span>React&nbsp;Native</span><span>Expo</span><span>Node.js</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <h3 class="sub">Education</h3>
+        <article class="edu">
+          <h4>M.S. Computer Science</h4>
+          <p class="when">Northeastern Illinois University, Chicago · 2019 – 2021</p>
+          <ul>
+            <li>Graduated with a 4.0 GPA.</li>
+            <li>Published <em>E-IoT — Emulator to Design and Test IoT Applications</em>.</li>
+          </ul>
+        </article>
+        <article class="edu">
+          <h4>B.E. Computer Science Engineering</h4>
+          <p class="when">2014 – 2018</p>
+          <ul>
+            <li>Distinction, top 5% of class, 3.78 GPA.</li>
+            <li>Dissertation on data security in cloud computing.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── Contact ─────────────────────── -->
+  <section class="band band-last" id="contact">
+    <div class="wrap contact">
+      <header class="sec-head reveal">
+        <p class="kicker">Contact</p>
+        <h2>Say hello</h2>
+        <p class="sec-sub">
+          Email is the shortest path, and it reaches me directly. I read
+          everything, and I reply to anything that isn't a pitch deck.
+        </p>
+      </header>
+
+      <div class="contact-actions reveal">
+        <a class="btn btn-primary" href="mailto:hello@mohammedashfaq.com">hello@mohammedashfaq.com</a>
+        <a class="btn" href="https://github.com/menti-ashfaq">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p>© <span id="year">2026</span> Mohammed Ashfaq</p>
+    <p class="footer-meta">Hand-written HTML and CSS. No trackers, no cookies.</p>
+  </div>
+</footer>
+
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<script src="/script.js"></script>
 </body>
 </html>
