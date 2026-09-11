@@ -61,7 +61,6 @@
     </a>
 
     <nav class="nav" id="nav" aria-label="Primary">
-      <a href="#dinner">Demo</a>
       <a href="#work">Work</a>
       <a href="#projects">Projects</a>
       <a href="#background">Background</a>
@@ -90,9 +89,13 @@
     </div>
 
     <div class="wrap hero-inner">
-      <button class="portrait-btn reveal" id="portrait-btn" type="button" title="Go on, tap it" aria-label="Mohammed Ashfaq — tap for a snack">
-        <img class="portrait" src="/assets/portrait.jpg" alt="Mohammed Ashfaq" width="150" height="150" fetchpriority="high">
-        <span class="portrait-ring" aria-hidden="true"></span>
+      <button class="portrait-btn reveal" id="portrait-btn" type="button" title="Go on, click it" aria-label="Mohammed Ashfaq — click for a snack">
+        <span class="portrait-flip" id="portrait-flip">
+          <span class="portrait-face portrait-front">
+            <img class="portrait" src="/assets/portrait.jpg" alt="Mohammed Ashfaq" width="150" height="150" fetchpriority="high">
+          </span>
+          <span class="portrait-face portrait-back" aria-hidden="true">click me</span>
+        </span>
       </button>
 
       <p class="eyebrow reveal">
@@ -110,117 +113,26 @@
       <p class="lead reveal">
         Reliability is the whole job: knowing a service is unhealthy before anyone
         complains, and making sure it scales and stays fast once it is. I work on
-        the monitoring, the pipelines, and the infrastructure underneath — then go
-        home and build small apps that keep your data on your own device.
+        the monitoring, the pipelines, and the infrastructure underneath.
       </p>
 
       <div class="cta-row reveal">
         <a class="btn btn-primary" href="#work">See my work</a>
-        <a class="btn" href="#dinner">Try the dinner picker</a>
+        <a class="btn" href="#contact">Get in touch</a>
       </div>
 
       <dl class="stats reveal">
         <div><dt>Years building</dt><dd data-count="8">8</dd></div>
-        <div><dt>Latency cut at NOMADD</dt><dd data-count="40" data-suffix="×">40×</dd></div>
-        <div><dt>Trackers I ship</dt><dd data-count="0">0</dd></div>
+        <div title="In 2006, Time gave it to “You” — everyone who makes the internet. I am claiming my share.">
+          <dt>Awards</dt>
+          <dd class="stat-text">TIME Person of the Year, 2006</dd>
+        </div>
       </dl>
     </div>
 
-    <a class="scroll-hint" href="#dinner" aria-hidden="true" tabindex="-1">
+    <a class="scroll-hint" href="#work" aria-hidden="true" tabindex="-1">
       <span></span>
     </a>
-  </section>
-
-  <!-- ──────────────────── Interactive demo ──────────────────── -->
-  <section class="band" id="dinner">
-    <div class="wrap">
-      <header class="sec-head reveal">
-        <p class="kicker">Playable</p>
-        <h2>What Do I Cook Today</h2>
-        <p class="sec-sub">
-          An iOS app for people who can already cook twenty things and still stare
-          into the fridge. Below is the real picker, running the same weighting the
-          app uses: the longer since you cooked something, the likelier it comes up.
-        </p>
-      </header>
-
-      <div class="demo reveal">
-        <div class="demo-phone">
-          <div class="phone">
-            <div class="phone-top" aria-hidden="true"><span class="notch"></span></div>
-
-            <div class="phone-screen">
-              <div class="phone-head">
-                <img class="app-icon" src="/assets/cooktoday-icon.png" alt="" width="34" height="34">
-                <div>
-                  <p class="phone-title">Today</p>
-                  <p class="phone-sub" id="pool-count">32 dishes in rotation</p>
-                </div>
-              </div>
-
-              <div class="tags" role="group" aria-label="Filter by mood">
-                <button class="tag" type="button" data-tag="veg">veg</button>
-                <button class="tag" type="button" data-tag="quick">quick</button>
-                <button class="tag" type="button" data-tag="comfort">comfort</button>
-                <button class="tag" type="button" data-tag="healthy">healthy</button>
-              </div>
-
-              <div class="result" id="result" aria-live="polite">
-                <div class="result-empty" id="result-empty">
-                  <span class="plate" aria-hidden="true">🍽️</span>
-                  <p>Tap below and I'll decide for you.</p>
-                </div>
-              </div>
-
-              <div class="phone-actions">
-                <button class="btn btn-primary btn-block" id="pick-btn" type="button">Pick my dinner</button>
-                <div class="sub-actions" id="sub-actions" hidden>
-                  <button class="btn btn-sm" id="shuffle-btn" type="button">Shuffle again</button>
-                  <button class="btn btn-sm btn-cook" id="cook-btn" type="button">I'm cooking this</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="demo-notes">
-          <h3>How the pick works</h3>
-          <ul class="notes">
-            <li>
-              <strong>Staleness, squared.</strong> Every dish gets a weight of
-              <code>(days since cooked + 1)²</code>, so a meal you last made in
-              spring easily outbids last Tuesday's pasta.
-            </li>
-            <li>
-              <strong>Never-cooked counts as 90 days.</strong> New dishes compete
-              hard without completely taking over the rotation.
-            </li>
-            <li>
-              <strong>Shuffles cheat, on purpose.</strong> Four times in ten a
-              reroll ignores the weighting entirely, so it never feels like the
-              app is on rails.
-            </li>
-            <li>
-              <strong>Nothing leaves the device.</strong> No accounts, no backend,
-              no analytics — in the app, and on this page too. Your taps here stay
-              in your own browser.
-            </li>
-          </ul>
-
-          <div class="cook-log" id="cook-log" hidden>
-            <p class="cook-log-title">Cooked in this session</p>
-            <ul id="cook-log-list"></ul>
-          </div>
-
-          <p class="ship-note">
-            <span class="badge">Coming soon</span>
-            Built with Expo and React Native, in review for the App Store.
-            <a href="/whatdoicooktoday/privacy/">Privacy policy</a> ·
-            <a href="https://github.com/menti-ashfaq/whatdoicooktoday">Source</a>
-          </p>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ───────────────────────── Work ───────────────────────── -->
@@ -232,18 +144,22 @@
 
     <ol class="timeline">
       <li class="tl-item reveal">
-        <div class="tl-marker" aria-hidden="true"></div>
-        <article class="tl-card">
+        <div class="tl-marker is-now" aria-hidden="true"></div>
+        <article class="tl-card is-now">
           <header class="tl-head">
-            <h3>Software Engineer</h3>
-            <p class="when">King Abdullah University of Science and Technology · 2018 – 2020</p>
+            <h3>Platform &amp; Site Reliability Engineer</h3>
+            <p class="when"><span class="now-dot" aria-hidden="true"></span>Mentimeter · Stockholm · 2022 – now</p>
           </header>
+          <p>
+            Keeping an interactive presentation platform healthy for a live audience,
+            where a slow response is as visible as an outage.
+          </p>
           <ul>
-            <li>Re-engineered end-to-end service processes and cut paperwork by <strong>90%</strong> across five departments.</li>
-            <li>Restructured Python services around clearer object models and faster execution.</li>
-            <li>Built a SharePoint and Power Apps panel for handover tracking that cut item-hunting time by 75%.</li>
+            <li>Led the migration of production workloads from Heroku to AWS — <strong>20%</strong> faster, around <strong>10%</strong> cheaper, and a platform engineers can experiment on instead of design around.</li>
+            <li>Defined system-level and business-level SLIs, and built the SLO dashboards now relied on across the company, all provisioned as infrastructure-as-code.</li>
+            <li>Introduced company-wide on-call so every signal of user-facing impact routes to the team that owns it; monitor acknowledgement rose <strong>95%</strong>.</li>
           </ul>
-          <p class="chips"><span>Python</span><span>MVC</span><span>SharePoint</span><span>Power BI</span></p>
+          <p class="chips"><span>Datadog</span><span>Terraform</span><span>Pulumi</span><span>AWS</span><span>Kubernetes</span><span>SLOs</span></p>
         </article>
       </li>
 
@@ -267,19 +183,18 @@
       </li>
 
       <li class="tl-item reveal">
-        <div class="tl-marker is-now" aria-hidden="true"></div>
-        <article class="tl-card is-now">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
           <header class="tl-head">
-            <h3>Platform &amp; Site Reliability Engineer</h3>
-            <p class="when"><span class="now-dot" aria-hidden="true"></span>Mentimeter · Stockholm · 2022 – now</p>
+            <h3>Software Engineer</h3>
+            <p class="when">King Abdullah University of Science and Technology · 2018 – 2020</p>
           </header>
-          <p>
-            Keeping an interactive presentation platform healthy for a live audience,
-            where a slow response is as visible as an outage. Monitoring and alerting,
-            incident response, deploy pipelines, and the cloud infrastructure product
-            teams build on.
-          </p>
-          <p class="chips"><span>Datadog</span><span>Kubernetes</span><span>Terraform</span><span>AWS</span><span>Incident response</span></p>
+          <ul>
+            <li>Re-engineered end-to-end service processes and cut paperwork by <strong>90%</strong> across five departments.</li>
+            <li>Restructured Python services around clearer object models and faster execution.</li>
+            <li>Built a SharePoint and Power Apps panel for handover tracking that cut item-hunting time by 75%.</li>
+          </ul>
+          <p class="chips"><span>Python</span><span>MVC</span><span>SharePoint</span><span>Power BI</span></p>
         </article>
       </li>
     </ol>
@@ -302,7 +217,7 @@
           weighted by how long since you last made each one. Offline by design.
         </p>
         <p class="card-links">
-          <a href="#dinner">Try the demo</a>
+          <a href="/whatdoicooktoday/">Try the picker →</a>
           <a href="https://github.com/menti-ashfaq/whatdoicooktoday">Source</a>
         </p>
       </article>
