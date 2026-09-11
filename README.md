@@ -16,6 +16,16 @@ and push.
   privacy page is scoped to `body > .wrap` at the bottom of the file, so the
   home page and the policy can be styled independently without touching the
   policy's markup.
+
+## Colour
+
+The site palette is cool slate with a signal blue. The *What Do I Cook Today*
+app has its own warm palette, and that warm set is redeclared on `.phone` only
+— so the mockup looks like the real app while the rest of the site does not. It
+stays light in both site themes because the app ships light-only
+(`userInterfaceStyle: "light"` in its `app.json`). Changing the site's colours
+means editing the tokens on `:root`; the mockup will not follow, which is
+deliberate.
 - `assets/` — portrait, favicons, and the app icon.
 - `CNAME` — binds the custom domain. Deleting it reverts the site to
   `<user>.github.io` and breaks both URLs filed with Apple.

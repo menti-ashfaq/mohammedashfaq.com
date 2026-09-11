@@ -61,14 +61,15 @@
      ------------------------------------------------------------ */
   const countUp = (el) => {
     const target = Number(el.dataset.count);
+    const suffix = el.dataset.suffix || "";
     if (!Number.isFinite(target) || calm || target === 0) {
-      el.textContent = String(target || 0);
+      el.textContent = String(target || 0) + suffix;
       return;
     }
     const started = performance.now();
     const step = (now) => {
       const p = Math.min((now - started) / 900, 1);
-      el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+      el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3)))) + suffix;
       if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
@@ -120,11 +121,11 @@
   const swap = $("#swap");
   if (swap && !calm) {
     const phrases = [
-      "stay out of the way",
-      "work without a login",
-      "keep your data at home",
-      "make one decision easier",
-      "still work offline",
+      "monitor your website",
+      "are scalable",
+      "are performant",
+      "page me before users notice",
+      "keep the graphs boring",
     ];
 
     swap.innerHTML = "";
