@@ -138,7 +138,7 @@
   const swap = $("#swap");
   if (swap && !calm) {
     const phrases = [
-      "monitor your website",
+      "monitor your application",
       "are scalable",
       "are performant",
       "page me before users notice",
