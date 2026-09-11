@@ -31,25 +31,9 @@
   --ring: 0 0 0 3px var(--accent-soft), 0 0 0 4px var(--accent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0A0F1A;
-    --bg-alt: #0E1523;
-    --card: #141C2C;
-    --border: #253149;
-    --text: #E9EEF8;
-    --muted: #93A2BA;
-    --accent: #4D8DFF;
-    --accent-dark: #8AB4FF;
-    --accent-soft: #14233E;
-    --signal: #34D399;
-    --signal-glow: rgba(52, 211, 153, 0.5);
-    --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
-    --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.55);
-    --topbar: rgba(10, 15, 26, 0.85);
-  }
-}
-
+/* Light is the default in every case, including for visitors whose system
+   is set to dark. Dark is opt-in through the toggle, which sets
+   `data-theme="dark"` and remembers it. */
 :root[data-theme="dark"] {
   --bg: #0A0F1A;
   --bg-alt: #0E1523;
@@ -215,8 +199,7 @@ code {
   box-shadow: inset -4px -3px 0 0 var(--card);
   transition: box-shadow 0.3s ease, transform 0.4s ease;
 }
-:root[data-theme="dark"] .theme-icon,
-:root[data-theme="light"] .theme-icon { transform: rotate(180deg); }
+:root[data-theme="dark"] .theme-icon { transform: rotate(180deg); }
 
 .nav-btn { display: none; }
 
@@ -685,6 +668,8 @@ h1 {
 
 .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
 
+/* Oldest role first, so the line brightens as it runs down towards the
+   current one. */
 .timeline::before {
   content: "";
   position: absolute;
@@ -692,8 +677,8 @@ h1 {
   top: 0.7rem;
   bottom: 1.5rem;
   width: 2px;
-  background: linear-gradient(var(--accent), var(--border));
-  opacity: 0.4;
+  background: linear-gradient(var(--border), var(--accent));
+  opacity: 0.5;
 }
 
 .tl-item { position: relative; padding-left: 2.4rem; margin-bottom: 1.1rem; }
@@ -706,8 +691,15 @@ h1 {
   height: 16px;
   border-radius: 50%;
   background: var(--card);
-  border: 3px solid var(--accent);
+  border: 3px solid var(--border);
 }
+
+.tl-marker.is-now {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.tl-card.is-now { border-color: var(--accent); }
 
 .tl-card {
   background: var(--card);

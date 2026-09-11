@@ -21,12 +21,20 @@
      ------------------------------------------------------------ */
   const themeBtn = $("#theme-btn");
   if (themeBtn) {
-    const systemDark = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const meta = $("#theme-color");
+    const BAR = { light: "#F5F8FC", dark: "#0A0F1A" };
+
+    const paintBrowserBar = (theme) => {
+      if (meta) meta.setAttribute("content", BAR[theme] || BAR.light);
+    };
+
+    paintBrowserBar(document.documentElement.dataset.theme || "light");
 
     themeBtn.addEventListener("click", () => {
-      const current = document.documentElement.dataset.theme || (systemDark() ? "dark" : "light");
-      const next = current === "dark" ? "light" : "dark";
+      // Light is the default, so anything other than an explicit "dark" is light.
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
       document.documentElement.dataset.theme = next;
+      paintBrowserBar(next);
       try {
         localStorage.setItem("theme", next);
       } catch (e) {
